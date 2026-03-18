@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph, START, END
-from langchain_core.messages import BaseMessage
+from langchain_core.messages import BaseMessage, HumanMessage
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from typing import TypedDict, Annotated
@@ -13,7 +13,7 @@ model = ChatOpenAI()
 
 class QAState(TypedDict):
 
-    messages : str = Annotated[list[BaseMessage], add_messages]
+    messages : Annotated[list[BaseMessage], add_messages]
 
 
 def chatnode(state : QAState) -> QAState:
@@ -22,7 +22,6 @@ def chatnode(state : QAState) -> QAState:
     response = model.invoke(messages)
 
     return {'messages': [response]}
-
 
 checkpointer = InMemorySaver()
 
