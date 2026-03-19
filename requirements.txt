@@ -9,14 +9,10 @@ langchain
 langchain-core
 langchain-community
 
-# token
-tiktoken
 
-# vector store
-faiss-cpu
+# sqlite
+langgraph-checkpoint-sqlite
 
-# youtube api
-youtube-transcript-api
 
 # OpenAI
 langchain-openai
